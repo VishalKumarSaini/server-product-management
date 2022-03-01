@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/admin/")
+@RequestMapping("/api/v1/admin")
 public class AdminController {
     final ProductService productService;
     final UserService userService;
@@ -47,7 +47,7 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("user-all")
+    @GetMapping("/user-all")
     public ResponseEntity<?> allUser() {
         return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
     }

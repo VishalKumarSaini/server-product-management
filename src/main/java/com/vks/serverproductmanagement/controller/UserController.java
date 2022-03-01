@@ -15,7 +15,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping(value = "api/v1/user/")
+@RequestMapping("/api/v1/user")
 public class UserController {
     private UserService userService;
     private ProductService productService;
@@ -29,23 +29,23 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "register")
-    public ResponseEntity<?> registerUser(@RequestBody(required = true) User user) {
-        if (userService.findByUserName(user.getName()) != null) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
-        user.setUserRole(UserRole.User);
-        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
-    }
+//    @PostMapping(value = "register")
+//    public ResponseEntity<?> registerUser(@RequestBody(required = true) User user) {
+//        if (userService.findByUserName(user.getName()) != null) {
+//            return new ResponseEntity<>(HttpStatus.CONFLICT);
+//        }
+//        user.setUserRole(UserRole.User);
+//        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+//    }
 
-    @GetMapping("login")
-    public ResponseEntity<?> userLogin(Principal principal) {
-        if (principal == null || principal.getName() == null) {
-            //logout will be here too
-            return ResponseEntity.ok(principal);
-        }
-        return new ResponseEntity<>(userService.findByUserName(principal.getName()), HttpStatus.OK);
-    }
+//    @GetMapping("login")
+//    public ResponseEntity<?> userLogin(Principal principal) {
+//        if (principal == null || principal.getName() == null) {
+//            //logout will be here too
+//            return ResponseEntity.ok(principal);
+//        }
+//        return new ResponseEntity<>(userService.findByUserName(principal.getName()), HttpStatus.OK);
+//    }
 
     @PostMapping("purchase")
     public ResponseEntity<?> buyProduct(@RequestBody Transaction transaction) {

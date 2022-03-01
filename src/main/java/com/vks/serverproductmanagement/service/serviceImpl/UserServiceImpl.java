@@ -2,7 +2,6 @@ package service.serviceImpl;
 
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 import service.ApiValidationException;
@@ -13,8 +12,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    public PasswordEncoder passwordEncoder;
+    //    @Autowired
+//    public PasswordEncoder passwordEncoder;
     @Autowired
     UserRepository userRepository;
 
@@ -22,11 +21,11 @@ public class UserServiceImpl implements UserService {
         return userRepository;
     }
 
-    @Override
-    public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
-    }
+//    @Override
+//    public User saveUser(User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        return userRepository.save(user);
+//    }
 
 
     @Override
