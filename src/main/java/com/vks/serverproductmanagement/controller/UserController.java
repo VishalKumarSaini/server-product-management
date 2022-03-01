@@ -15,7 +15,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/user/")
 public class UserController {
     private UserService userService;
     private ProductService productService;
@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping(value = "register")
     public ResponseEntity<?> registerUser(@RequestBody(required = true) User user) {
-        if (userService.findByUserName(user.getName()) != null) {
+        if (userService.findByName(user.getName()) != null) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         user.setUserRole(UserRole.User);
@@ -44,7 +44,7 @@ public class UserController {
             //logout will be here too
             return ResponseEntity.ok(principal);
         }
-        return new ResponseEntity<>(userService.findByUserName(principal.getName()), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findByName(principal.getName()), HttpStatus.OK);
     }
 
     @PostMapping("purchase")

@@ -4,17 +4,15 @@ import com.vks.serverproductmanagement.model.User;
 import com.vks.serverproductmanagement.repository.UserRepository;
 import com.vks.serverproductmanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    public PasswordEncoder passwordEncoder;
+//    @Autowired
+//    public PasswordEncoder passwordEncoder;
     @Autowired
     UserRepository userRepository;
 
@@ -24,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -40,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserName(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("No record found"));
+    public User findByName(String username) {
+        return userRepository.findByName(username).orElse(null);
     }
 
     @Override

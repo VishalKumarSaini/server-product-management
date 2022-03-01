@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/admin")
+@RequestMapping("/api/v1/admin/")
 public class AdminController {
     final ProductService productService;
     final UserService userService;
@@ -30,24 +30,25 @@ public class AdminController {
 
     @PutMapping("user-update")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
-        User existUser = userService.findByUserName(user.getName());
+        User existUser = userService.findByName(user.getName());
         if (existUser != null && existUser.getId().equals(user.getId())) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         return new ResponseEntity<>(userService.updateUser(user), HttpStatus.CREATED);
     }
 
+
     @PostMapping("user-delete")
     public ResponseEntity<?> deleteUser(@RequestBody User user) {
-        User existUser = userService.findByUserName(user.getName());
+        User existUser = userService.findByName(user.getName());
         if (existUser == null || !Objects.equals(existUser.getId(), user.getId())) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         userService.deleteUserById(user.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/user-all")
+    @GetMapping("user-all")
     public ResponseEntity<?> allUser() {
         return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
     }
@@ -59,7 +60,7 @@ public class AdminController {
         stringResponse.setResponse(userCount.toString());
         return new ResponseEntity<>(stringResponse, HttpStatus.OK);
     }
-
+    //@PreAuthorize("hasRole('ADMIN')")
     @GetMapping("product-all")
     public ResponseEntity<?> allProduct() {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);

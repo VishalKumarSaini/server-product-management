@@ -13,7 +13,7 @@ public interface UserService {
 
     //Optional<User> findByUsername(String username);
 
-    User findByUserName(String username);
+    User findByName(String username);
 
     List<User> findAllUser();
 
