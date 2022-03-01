@@ -1,15 +1,15 @@
-package controller;
+package com.vks.serverproductmanagement.controller;
 
-import model.Product;
-import model.User;
+import com.vks.serverproductmanagement.model.Product;
+import com.vks.serverproductmanagement.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.ProductService;
-import service.TransactionService;
-import service.UserService;
-import util.StringResponse;
+import com.vks.serverproductmanagement.service.ProductService;
+import com.vks.serverproductmanagement.service.TransactionService;
+import com.vks.serverproductmanagement.service.UserService;
+import com.vks.serverproductmanagement.util.StringResponse;
 
 import java.util.Objects;
 import java.util.Optional;

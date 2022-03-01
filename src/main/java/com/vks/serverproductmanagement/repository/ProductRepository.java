@@ -1,6 +1,6 @@
-package repository;
+package com.vks.serverproductmanagement.repository;
 
-import model.Product;
+import com.vks.serverproductmanagement.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {

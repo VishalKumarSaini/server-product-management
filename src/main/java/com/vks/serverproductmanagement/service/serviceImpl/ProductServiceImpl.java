@@ -1,13 +1,15 @@
-package service.serviceImpl;
+package com.vks.serverproductmanagement.service.serviceImpl;
 
-import model.Product;
+import com.vks.serverproductmanagement.model.Product;
+import com.vks.serverproductmanagement.repository.ProductRepository;
+import com.vks.serverproductmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.ProductRepository;
-import service.ProductService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProductServiceImpl implements ProductService {
     final ProductRepository productRepository;
 
@@ -17,18 +19,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
     @Override
-    public Long countAllProducts(){
+    public Long countAllProducts() {
         return productRepository.count();
     }
 
     @Override
-    public Optional<Product> findProduct(Long productId){
-        return  productRepository.findById(productId);
+    public Optional<Product> findProduct(Long productId) {
+        return productRepository.findById(productId);
     }
 
     @Override
@@ -37,8 +39,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProduct( Product product) {
-        Product existProduct=productRepository.getById(product.getId());
+    public Product updateProduct(Product product) {
+        Product existProduct = productRepository.getById(product.getId());
         existProduct.setProductName(product.getProductName());
         existProduct.setExplanation(product.getExplanation());
         existProduct.setPrice(product.getPrice());
@@ -46,8 +48,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProduct( Product product) {
-         productRepository.deleteById(product.getId());
+    public void deleteProduct(Product product) {
+        productRepository.deleteById(product.getId());
     }
 
 }

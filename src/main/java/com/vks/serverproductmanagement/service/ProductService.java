@@ -1,6 +1,6 @@
-package service;
+package com.vks.serverproductmanagement.service;
 
-import model.Product;
+import com.vks.serverproductmanagement.model.Product;
 
 import java.util.List;
 import java.util.Optional;

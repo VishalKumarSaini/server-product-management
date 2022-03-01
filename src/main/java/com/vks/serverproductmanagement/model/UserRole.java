@@ -1,4 +1,4 @@
-package model;
+package com.vks.serverproductmanagement.model;
 
 public enum UserRole {
     User ,

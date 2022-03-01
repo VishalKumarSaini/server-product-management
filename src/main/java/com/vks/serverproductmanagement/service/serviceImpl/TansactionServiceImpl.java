@@ -1,11 +1,11 @@
-package service.serviceImpl;
+package com.vks.serverproductmanagement.service.serviceImpl;
 
-import model.Transaction;
+import com.vks.serverproductmanagement.model.Transaction;
+import com.vks.serverproductmanagement.repository.TransactionRepository;
+import com.vks.serverproductmanagement.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import repository.TransactionRepository;
-import service.TransactionService;
 
 import java.util.List;
 

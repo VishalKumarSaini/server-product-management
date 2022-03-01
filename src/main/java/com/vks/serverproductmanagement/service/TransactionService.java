@@ -1,6 +1,6 @@
-package service;
+package com.vks.serverproductmanagement.service;
 
-import model.Transaction;
+import com.vks.serverproductmanagement.model.Transaction;
 
 import java.util.List;
 

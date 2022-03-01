@@ -1,6 +1,6 @@
-package repository;
+package com.vks.serverproductmanagement.repository;
 
-import model.User;
+import com.vks.serverproductmanagement.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

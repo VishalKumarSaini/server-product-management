@@ -1,12 +1,11 @@
-package service;
+package com.vks.serverproductmanagement.service;
 
-import model.User;
+import com.vks.serverproductmanagement.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
-    //User saveUser(User user);
+    User saveUser(User user);
 
     User updateUser(User user);
 

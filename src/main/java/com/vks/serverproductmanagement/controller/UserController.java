@@ -1,15 +1,15 @@
-package controller;
+package com.vks.serverproductmanagement.controller;
 
-import model.Transaction;
-import model.User;
-import model.UserRole;
+import com.vks.serverproductmanagement.model.Transaction;
+import com.vks.serverproductmanagement.model.User;
+import com.vks.serverproductmanagement.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.ProductService;
-import service.TransactionService;
-import service.UserService;
+import com.vks.serverproductmanagement.service.ProductService;
+import com.vks.serverproductmanagement.service.TransactionService;
+import com.vks.serverproductmanagement.service.UserService;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -29,23 +29,23 @@ public class UserController {
     }
 
 
-//    @PostMapping(value = "register")
-//    public ResponseEntity<?> registerUser(@RequestBody(required = true) User user) {
-//        if (userService.findByUserName(user.getName()) != null) {
-//            return new ResponseEntity<>(HttpStatus.CONFLICT);
-//        }
-//        user.setUserRole(UserRole.User);
-//        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
-//    }
+    @PostMapping(value = "register")
+    public ResponseEntity<?> registerUser(@RequestBody(required = true) User user) {
+        if (userService.findByUserName(user.getName()) != null) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        user.setUserRole(UserRole.User);
+        return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
+    }
 
-//    @GetMapping("login")
-//    public ResponseEntity<?> userLogin(Principal principal) {
-//        if (principal == null || principal.getName() == null) {
-//            //logout will be here too
-//            return ResponseEntity.ok(principal);
-//        }
-//        return new ResponseEntity<>(userService.findByUserName(principal.getName()), HttpStatus.OK);
-//    }
+    @GetMapping("login")
+    public ResponseEntity<?> userLogin(Principal principal) {
+        if (principal == null || principal.getName() == null) {
+            //logout will be here too
+            return ResponseEntity.ok(principal);
+        }
+        return new ResponseEntity<>(userService.findByUserName(principal.getName()), HttpStatus.OK);
+    }
 
     @PostMapping("purchase")
     public ResponseEntity<?> buyProduct(@RequestBody Transaction transaction) {

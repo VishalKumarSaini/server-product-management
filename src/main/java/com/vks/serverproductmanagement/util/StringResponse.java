@@ -1,4 +1,4 @@
-package util;
+package com.vks.serverproductmanagement.util;
 
 import lombok.Data;
 

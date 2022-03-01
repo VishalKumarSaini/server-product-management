@@ -1,4 +1,4 @@
-package model;
+package com.vks.serverproductmanagement.model;
 
 import lombok.Data;
 
