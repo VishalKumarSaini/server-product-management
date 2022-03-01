@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### Product Service ###
-!**/src/main/resources/application.properties
+*.properties
