@@ -31,10 +31,10 @@ public class UserController {
 
     @PostMapping(value = "register")
     public ResponseEntity<?> registerUser(@RequestBody(required = true) User user) {
-        if (userService.findByName(user.getName()) != null) {
+        if (userService.findByUserName(user.getUsername()) != null) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        user.setUserRole(UserRole.User);
+        user.setUserRole(UserRole.ROLE_USER);
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
@@ -44,7 +44,7 @@ public class UserController {
             //logout will be here too
             return ResponseEntity.ok(principal);
         }
-        return new ResponseEntity<>(userService.findByName(principal.getName()), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findByUserName(principal.getName()), HttpStatus.OK);
     }
 
     @PostMapping("purchase")

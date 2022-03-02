@@ -30,7 +30,7 @@ public class AdminController {
 
     @PutMapping("user-update")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
-        User existUser = userService.findByName(user.getName());
+        User existUser = userService.findByUserName(user.getUsername());
         if (existUser != null && existUser.getId().equals(user.getId())) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
@@ -40,7 +40,7 @@ public class AdminController {
 
     @PostMapping("user-delete")
     public ResponseEntity<?> deleteUser(@RequestBody User user) {
-        User existUser = userService.findByName(user.getName());
+        User existUser = userService.findByUserName(user.getUsername());
         if (existUser == null || !Objects.equals(existUser.getId(), user.getId())) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
