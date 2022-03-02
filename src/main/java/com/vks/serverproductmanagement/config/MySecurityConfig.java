@@ -50,6 +50,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .deleteCookies("JSESSIONID")
+                .deleteCookies("XSRF-TOKEN")
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/signin");
 
