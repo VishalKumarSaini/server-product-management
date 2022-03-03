@@ -12,8 +12,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-@Configuration
-@EnableWebSecurity
+
+//Commented in order to use Jwtconfig
+
+//@Configuration
+//@EnableWebSecurity
+
+
 //In case of  @PreAuthorize("hasRole('ADMIN')") annotation | ant matcher won't require
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {

@@ -17,9 +17,9 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/api/v1/user/")
 public class UserController {
-    private UserService userService;
-    private ProductService productService;
-    private TransactionService transactionService;
+    private final UserService userService;
+    private final ProductService productService;
+    private final TransactionService transactionService;
 
     @Autowired
     public UserController(UserService userService, ProductService productService, TransactionService transactionService) {

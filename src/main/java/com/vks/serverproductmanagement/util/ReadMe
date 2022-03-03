@@ -1,0 +1,23 @@
+
+To get better understanding of the Spring Security Internal Working:
+
+A. Search(Shift+shift), classes: "BasicAuthenticationFilter.java".
+B. Exploring "doFilterInternal": will perform following operations:--
+
+        1. Field "BasicAuthenticationConverter";  will show how:
+                    a. Token is extracted from header
+                    b. Token is decoded
+               ->   c. "UsernamePasswordAuthenticationToken" is generated.
+
+        2. Field "AuthenticationManager" is an interface; will show how:
+                A. "Authentication"  will be it's implementation
+                    a. "ProviderManager"; will show how:
+                        1. From various "AuthenticationProvider" required/suitable authentication
+                           provider is chose by Iterating all authentication provider.
+                ->      2. An "Authentication" object is returned. [Authenticated Object].
+
+        3. "SecurityContext" object is created in which "Authentication" object is passed
+        4. Thus "SecurityContextHolder" is set with(securityContext).
+        5. Hence, on "onSuccessfulAuthentication" other parameters are set and passed to the browser as
+           Authorised User (Principal).
+
