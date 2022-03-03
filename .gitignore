@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### Product Service ###
-*.properties
+**/*.properties
