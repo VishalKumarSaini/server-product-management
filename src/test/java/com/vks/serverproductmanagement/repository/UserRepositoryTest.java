@@ -3,6 +3,7 @@ package com.vks.serverproductmanagement.repository;
 import com.vks.serverproductmanagement.model.User;
 import com.vks.serverproductmanagement.model.UserRole;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ class UserRepositoryTest {
     @AfterEach
     void tearDown() {
         //userRepository.deleteAll();
+
         System.out.println("After Each called");
     }
 
