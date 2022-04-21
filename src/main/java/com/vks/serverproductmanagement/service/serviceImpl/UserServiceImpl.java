@@ -4,7 +4,6 @@ import com.vks.serverproductmanagement.model.User;
 import com.vks.serverproductmanagement.repository.UserRepository;
 import com.vks.serverproductmanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.NoSuchElementException;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    public PasswordEncoder passwordEncoder;
-    @Autowired
     UserRepository userRepository;
 
     public UserRepository getUserRepository() {
@@ -24,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(user.getPassword());
         return userRepository.save(user);
     }
 
@@ -53,5 +50,6 @@ public class UserServiceImpl implements UserService {
     public Long countAllUser() {
         return userRepository.count();
     }
+
 
 }
