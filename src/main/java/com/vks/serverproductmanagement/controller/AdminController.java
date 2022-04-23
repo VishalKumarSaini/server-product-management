@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/admin")
+@RequestMapping("/api/v1")
 public class AdminController {
     final ProductService productService;
     final UserService userService;
@@ -28,7 +28,7 @@ public class AdminController {
         this.transactionService = transactionService;
     }
 
-    @PutMapping("user-update")
+    @PutMapping("/admin/user-update")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         User existUser = userService.findByUserName(user.getName());
         if (existUser != null && existUser.getId().equals(user.getId())) {
@@ -37,7 +37,7 @@ public class AdminController {
         return new ResponseEntity<>(userService.updateUser(user), HttpStatus.CREATED);
     }
 
-    @PostMapping("user-delete")
+    @PostMapping("/admin/user-delete")
     public ResponseEntity<?> deleteUser(@RequestBody User user) {
         User existUser = userService.findByUserName(user.getName());
         if (existUser == null || !Objects.equals(existUser.getId(), user.getId())) {
@@ -47,12 +47,12 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/user-all")
+    @GetMapping("/admin/user-all")
     public ResponseEntity<?> allUser() {
         return new ResponseEntity<>(userService.findAllUser(), HttpStatus.OK);
     }
 
-    @GetMapping("user-count")
+    @GetMapping("/admin/user-count")
     public ResponseEntity<?> countAllUser() {
         Long userCount = userService.countAllUser();
         StringResponse stringResponse = new StringResponse();
@@ -60,13 +60,13 @@ public class AdminController {
         return new ResponseEntity<>(stringResponse, HttpStatus.OK);
     }
 
-    @GetMapping("product-all")
+    @GetMapping("/admin/product-all")
     public ResponseEntity<?> allProduct() {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
 
 
-    @GetMapping("product-count")
+    @GetMapping("/admin/product-count")
     public ResponseEntity<?> countAllProduct() {
         Long productCount = productService.countAllProducts();
         StringResponse stringResponse = new StringResponse();
@@ -74,12 +74,12 @@ public class AdminController {
         return new ResponseEntity<>(stringResponse, HttpStatus.OK);
     }
 
-    @PostMapping("product-create")
+    @PostMapping("/admin/product-create")
     public ResponseEntity<?> createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(productService.addProduct(product), HttpStatus.CREATED);
     }
 
-    @PutMapping("product-update")
+    @PutMapping("/admin/product-update")
     public ResponseEntity<?> updateProduct(@RequestBody Product product) {
         Optional<Product> existProduct = productService.findProduct(product.getId());
         if (Objects.isNull(existProduct)) {
@@ -88,7 +88,7 @@ public class AdminController {
         return new ResponseEntity<>(productService.updateProduct(product), HttpStatus.OK);
     }
 
-    @PostMapping("product-delete")
+    @PostMapping("/admin/product-delete")
     public ResponseEntity<?> deleteProduct(@RequestBody Product product) {
         Optional<Product> existProduct = productService.findProduct(product.getId());
         if (Objects.isNull(existProduct)) {
@@ -98,12 +98,12 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("transaction-all")
+    @GetMapping("/admin/transaction-all")
     public ResponseEntity<?> allTransaction() {
         return new ResponseEntity<>(transactionService.getAllTransaction(), HttpStatus.OK);
     }
 
-    @GetMapping("transaction-count")
+    @GetMapping("/admin/transaction-count")
     public ResponseEntity<?> countTransaction() {//todo: change respone into Class
 //        Long transactionCount= transactionService.countTransaction();
 //        StringResponse stringResponse= new StringResponse();

@@ -1,4 +1,4 @@
-package com.vks.serverproductmanagement.config;//package config;
+//package com.vks.serverproductmanagement.config;
 //
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
